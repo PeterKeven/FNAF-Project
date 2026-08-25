@@ -98,9 +98,10 @@ E, principalmente...
 ### Requisitos
 
 * Windows 10/11
-* Unreal Engine
-* Visual Studio, caso necessário para componentes C++
-* GPU compatível com os requisitos da Unreal Engine
+* Processador i5 1gen ou superior
+* 8gb Ram
+* GPU compatível com directX
+* 2gb de espaço livre
 
 ---
 
