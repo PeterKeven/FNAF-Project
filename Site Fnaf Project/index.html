@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIVE NIGHT AT FREDDY — 5 Noites. 0 Descanso.</title>
+<meta name="description" content="Sobreviva a 5 noites de turno. Monitore as câmeras, gerencie a energia, e reze pra bateria não acabar antes do sol nascer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HUD fixo: medidor de energia (elemento-assinatura) -->
+<div class="power-hud" id="powerHud" aria-hidden="true">
+  <span class="power-hud__label">ENERGIA</span>
+  <div class="power-hud__bar"><div class="power-hud__fill" id="powerFill"></div></div>
+  <span class="power-hud__pct" id="powerPct">100%</span>
+</div>
+
+<canvas id="staticCanvas" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar__brand">
+    <span class="topbar__dot"></span> FN@F SECURITY FEED
+  </div>
+  <nav class="topbar__nav">
+    <a href="#sobre">O turno</a>
+    <a href="#protocolos">Protocolos</a>
+    <a href="#galeria">Câmeras</a>
+    <a href="#requisitos">Requisitos</a>
+    <a href="#download" class="topbar__cta">Baixar</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="topo">
+    <div class="hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow">TRANSMISSÃO AO VIVO · SETOR DE SEGURANÇA</p>
+        <h1 class="hero__title">FIVE NIGHT<br>AT FREDDY</h1>
+        <p class="hero__tagline">5 noites. 0 descanso.<br>Sobreviva ao turno ou vire estatística.</p>
+        <div class="hero__actions">
+          <a href="#download" class="btn btn--primary">
+            <span class="btn__glow"></span>
+            BAIXAR AGORA
+          </a>
+          <a href="#requisitos" class="btn btn--ghost">Ver requisitos</a>
+        </div>
+        <p class="hero__note">Freddy não perdoa. Vacilou, morreu.</p>
+      </div>
+
+      <div class="hero__feed">
+        <div class="feed">
+          <img src="assets/game-cover.png" alt="Arte de capa de Five Night at Freddy: um animatrônico observando pela câmera de segurança" class="feed__img">
+          <div class="feed__overlay">
+            <span class="feed__cam">CAM 1A</span>
+            <span class="feed__rec">● REC</span>
+            <span class="feed__time" id="feedTime">01:14 AM</span>
+          </div>
+          <div class="feed__glitch" aria-hidden="true"></div>
+        </div>
+        <p class="feed__caption">imagem enviada pelo próprio guarda de plantão — sem edição.</p>
+      </div>
+    </div>
+    <div class="hero__scroll">role o mouse para continuar vigiando ↓</div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
+    <div class="section__head">
+      <p class="eyebrow">RELATÓRIO DE OCORRÊNCIA</p>
+      <h2>O turno</h2>
+    </div>
+    <div class="log">
+      <p class="log__line"><span class="log__tag">[22:00]</span> A pizzaria reabriu depois de anos fechada. Contrataram você pro turno da noite. Ninguém explicou direito por quê o último segurança não voltou pra pegar o cheque.</p>
+      <p class="log__line"><span class="log__tag">[00:00]</span> As câmeras cobrem quase tudo — quase. O que elas não mostram, você vai ter que sentir vindo pelo corredor.</p>
+      <p class="log__line"><span class="log__tag">[03:00]</span> A energia é limitada. Cada porta fechada, cada câmera ligada, custa bateria. Economize errado e o escuro vira o menor dos seus problemas.</p>
+      <p class="log__line log__line--alarm"><span class="log__tag">[06:00]</span> Sobreviva até o sino tocar. Cinco noites. É tudo que pedimos.</p>
+    </div>
+  </section>
+
+  <!-- PROTOCOLOS -->
+  <section class="protocolos" id="protocolos">
+    <div class="section__head">
+      <p class="eyebrow">MANUAL DO FUNCIONÁRIO</p>
+      <h2>Protocolos do plantão</h2>
+    </div>
+    <div class="proto-grid">
+      <div class="proto-card">
+        <span class="proto-card__tag">VIGIAR</span>
+        <h3>Monitore as câmeras</h3>
+        <p>Alterne entre os feeds pra saber onde cada um deles está. O que some de uma câmera, aparece em outra — ou na sua porta.</p>
+      </div>
+      <div class="proto-card">
+        <span class="proto-card__tag">RACIONAR</span>
+        <h3>Gerencie a energia</h3>
+        <p>Câmeras, portas e luzes dividem a mesma bateria. Se ela zerar antes do amanhecer, você fica sem defesa nenhuma.</p>
+      </div>
+      <div class="proto-card">
+        <span class="proto-card__tag">TRANCAR</span>
+        <h3>Feche as portas a tempo</h3>
+        <p>Cedo demais, você desperdiça energia à toa. Tarde demais, você não vai precisar mais de energia nenhuma.</p>
+      </div>
+      <div class="proto-card">
+        <span class="proto-card__tag">ESCUTAR</span>
+        <h3>Preste atenção nos sons</h3>
+        <p>Passos, respiração, música de caixinha. O áudio avisa antes da câmera. Quem joga de fone, chega mais longe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="galeria" id="galeria">
+    <div class="section__head">
+      <p class="eyebrow">ARQUIVO DE GRAVAÇÕES</p>
+      <h2>Câmeras de segurança</h2>
+      <p class="section__sub">Capturas do jogo em produção. Novos sinais sendo adicionados a cada atualização.</p>
+    </div>
+    <div class="cam-grid">
+      <div class="cam-slot" data-cam="CAM 1A"><canvas class="cam-slot__noise"></canvas><span class="cam-slot__label">CAM 1A · SINAL PERDIDO</span></div>
+      <div class="cam-slot" data-cam="CAM 2B"><canvas class="cam-slot__noise"></canvas><span class="cam-slot__label">CAM 2B · EM BREVE</span></div>
+      <div class="cam-slot" data-cam="CAM 3C"><canvas class="cam-slot__noise"></canvas><span class="cam-slot__label">CAM 3C · EM BREVE</span></div>
+      <div class="cam-slot" data-cam="CAM 4D"><canvas class="cam-slot__noise"></canvas><span class="cam-slot__label">CAM 4D · SINAL PERDIDO</span></div>
+    </div>
+  </section>
+
+  <!-- REQUISITOS -->
+  <section class="requisitos" id="requisitos">
+    <div class="section__head">
+      <p class="eyebrow">FICHA TÉCNICA</p>
+      <h2>Requisitos do sistema</h2>
+    </div>
+    <div class="req-table">
+      <div class="req-col">
+        <h3>Mínimo</h3>
+        <ul>
+          <li><span>SO</span>Windows 10 (64-bit)</li>
+          <li><span>Processador</span>Intel i5 / Ryzen 5</li>
+          <li><span>Memória</span>8 GB RAM</li>
+          <li><span>Vídeo</span>GTX 960 / RX 570</li>
+          <li><span>Armazenamento</span>4 GB disponíveis</li>
+        </ul>
+      </div>
+      <div class="req-col req-col--rec">
+        <h3>Recomendado</h3>
+        <ul>
+          <li><span>SO</span>Windows 10/11 (64-bit)</li>
+          <li><span>Processador</span>Intel i7 / Ryzen 7</li>
+          <li><span>Memória</span>16 GB RAM</li>
+          <li><span>Vídeo</span>GTX 1660 / RX 6600</li>
+          <li><span>Armazenamento</span>4 GB disponíveis (SSD)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="download" id="download">
+    <div class="download__blackout" id="blackout" aria-hidden="true"></div>
+    <div class="download__content">
+      <p class="eyebrow">GERADOR DE EMERGÊNCIA</p>
+      <h2>A energia acabou.<br>Só resta uma luz.</h2>
+      <p class="download__meta">Build 0.1 · Windows · ~4 GB · Feito na Unreal Engine</p>
+      <a href="#" class="btn btn--primary btn--big" id="downloadBtn">
+        <span class="btn__glow"></span>
+        BAIXAR FIVE NIGHT AT FREDDY
+      </a>
+      <p class="download__disclaimer">Jogo em desenvolvimento. Substitua este botão pelo link final de download antes de publicar o site.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>FIVE NIGHT AT FREDDY — jogo de fãs, feito na Unreal Engine.</p>
+  <p class="footer__muted">© <span id="year"></span>. Projeto independente sem fins comerciais.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
