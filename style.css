@@ -171,6 +171,27 @@ main, header, footer{ position:relative; z-index:2; }
 
 .btn--big{ padding:20px 40px; font-size:1.15rem; }
 
+.btn__icon{ width:18px; height:18px; flex-shrink:0; }
+
+.download__buttons{
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+.btn--linux{
+  background:var(--panel-2);
+  border:1px solid var(--amber-dim);
+  color:var(--amber);
+}
+.btn--linux:hover{ box-shadow:0 0 22px rgba(255,178,56,0.35); }
+
+@media (max-width:480px){
+  .download__buttons{ flex-direction:column; align-items:stretch; }
+  .download__buttons .btn{ width:100%; }
+}
+
 /* ===== Shared section chrome ===== */
 section{ padding:clamp(64px,10vw,120px) clamp(20px,6vw,80px); }
 .eyebrow{

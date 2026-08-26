@@ -146,9 +146,13 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   }
 })();
 
-// ===== Botão de download =====
-// Troque o href abaixo pelo link real do instalador antes de publicar.
-document.getElementById('downloadBtn').addEventListener('click', function(e){
-  e.preventDefault();
-  alert('Substitua este alerta pelo link real de download (ex: um .zip, .exe ou página da Steam/itch.io) no arquivo script.js.');
+// ===== Botões de download (Windows / Linux) =====
+// Troque o href de cada link pelo arquivo real (.exe/.zip pra Windows, .zip/.AppImage pra Linux)
+// ou pela página da loja (Steam/itch.io), antes de publicar o site.
+document.querySelectorAll('#downloadWin, #downloadLinux').forEach(btn => {
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    const plataforma = this.dataset.plataforma;
+    alert(`Substitua este alerta pelo link real de download para ${plataforma} no arquivo script.js.`);
+  });
 });
