@@ -3,7 +3,7 @@
 
 > Um jogo de terror inspirado em clássicos de sobrevivência noturna — só que com **zero descanso, muito desespero e uma boa dose de meme.**
 
-![Game Cover](game-cover.png)
+![Game Cover](GameCover.png)
 
 ## 🕹️ Sobre o jogo
 
