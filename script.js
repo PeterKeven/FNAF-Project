@@ -150,9 +150,5 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 // Troque o href de cada link pelo arquivo real (.exe/.zip pra Windows, .zip/.AppImage pra Linux)
 // ou pela página da loja (Steam/itch.io), antes de publicar o site.
 document.querySelectorAll('#downloadWin, #downloadLinux').forEach(btn => {
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    const plataforma = this.dataset.plataforma;
-    alert(`Substitua este alerta pelo link real de download para ${plataforma} no arquivo script.js.`);
-  });
+
 });
